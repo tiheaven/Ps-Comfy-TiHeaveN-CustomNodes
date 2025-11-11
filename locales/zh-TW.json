@@ -1,0 +1,95 @@
+{
+  "languageNames": {
+    "zh-CN": "简体中文",
+    "zh-TW": "繁體中文",
+    "en-US": "English"
+  },
+  "message": {
+    "noOpenDocument": "沒有打開任何文件",
+    "unknownReason": "未知原因",
+    "savefailed": "保存失敗："
+  },
+  "workflow": {
+    "selectDirPlaceholder": "選擇工作流目錄...",
+    "noSubdirectories": "「 ComfyUI\\user\\default\\workflows\\Ps-Comfy-TiHeaveN\\ 」路徑下需建立子目錄，工作流程檔案需放置在各子目錄內。\n 子目錄支援「 01 目錄名稱 」格式命名，將依數字排序且僅顯示「 目錄名稱 」；\n 工作流程檔案支援「 01 功能 [備註] 」格式命名，將依數字排序且僅顯示「 功能 」。",
+    "noFilesInDir": "該目錄下沒有文件",
+    "loadingDirs": "加載工作流目錄...",
+    "loadingFiles": "加載{dirName}目錄下的文件...",
+    "loadDirFailed": "加載目錄失敗",
+    "loadFileFailed": "加載文件失敗",
+    "readingWorkflow": "讀取工作流..."
+  },
+  "button": {
+    "refresh": "刷新",
+    "releaseModels": "釋放模型及緩存",
+    "stop": "中止",
+    "stopTasks": "中止伺服器所有佇列",
+    "run": "執行",
+    "settings": "設置",
+    "save": "保存",
+    "close": "關閉",
+    "randomize": "隨機數",
+    "AutoExpandSelection": "自動擴展選區"
+  },
+  "status": {
+    "ready": "準備就緒",
+    "memoryUsage": "記憶體佔用",
+    "noSelection": "沒有任何選區",
+    "noRunnableWorkflow": "沒有可運行的工作流",
+    "expandingSelection": "擴展選區",
+    "creatingSelectionImage": "創建選區圖像",
+    "uploading": "正在上傳...",
+    "uploadFailed": "上傳失敗",
+    "runningWorkflow": "執行工作流...",
+    "completed": "完成",
+    "releasingModels": "請求釋放模型及緩存...",
+    "releasedModels": "請求已發送:釋放模型及緩存",
+    "stoppingTask": "正在中止佇列...",
+    "stoppingTasks": "正在中止所有佇列...",
+    "stoppedTask": "請求已發送:中止佇列",
+    "stoppedTasks": "請求已發送:中止伺服器所有佇列",
+    "serverNotConnected": "未能連接Comfy...",
+    "serverConnected": "已連接Comfy",
+    "settingsSaved": "已儲存設定"
+  },
+  "dialog": {
+    "settings": "設置",
+    "comfyServerUrl": "Comfy服務器地址",
+    "enterServerUrl": "請輸入Comfy服務器地址",
+    "selectLanguage": "選擇語言(連接 Comfy 伺服器後獲取更多語言)",
+    "displayMemoryUsage": "顯示記憶體佔用"
+  },
+  "label": {
+    "executing": "正在執行",
+    "queuing": "排隊中",
+    "serverQueue": "剩餘佇列："
+  },
+  "tooltip": {
+    "serverNotConnected": "未能連接Comfy..."
+  },
+  "error": {
+    "uploadFailed": "上傳失敗：",
+    "noLoadImageNodes": "工作流中未找到任何LoadImage節點",
+    "invalidWorkflow": "無效的workflow對象",
+    "invalidNodeId": "無效的節點ID",
+    "nodeNotFound": "未找到ID為\"${nodeId}\"的節點",
+    "nodeNoClassType": "節點\"${nodeId}\"不包含class_type",
+    "nodeNoMetaTitle": "節點\"${nodeId}\"不包含有效的_meta.title",
+    "queuePromptFailed": "佇列執行失敗:",
+    "invalidImageData": "無效的圖像數據",
+    "webSocketError": "WebSocket錯誤:",
+    "webSocketUnexpectedClose": "WebSocket意外關閉",
+    "readWorkflowFailed": "讀取工作流失敗",
+    "unknownError": "未知錯誤:",
+    "getDirsFailed": "獲取目錄失敗:",
+    "getFilesFailed": "獲取文件列表失敗:",
+    "getQueueCountFailed": "獲取佇列任務數失敗:",
+    "getQueueInfoFailed": "獲取佇列信息失敗:",
+    "openDocumentFirst": "請先打開一個Photoshop文件",
+    "createSelectionFirst": "請先創建一個選區",
+    "getTempFolderFailed": "獲取臨時文件夾失敗: ",
+    "exportSelectionFailed": "導出選區時發生錯誤: ",
+    "noActiveDocument": "沒有活動的Photoshop文件"
+  },
+  "reward": "小夥伴們，覺得還不錯就贊賞支持一下哦～"
+}

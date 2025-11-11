@@ -1,0 +1,95 @@
+{
+  "languageNames": {
+    "zh-CN": "简体中文",
+    "zh-TW": "繁體中文",
+    "en-US": "English"
+  },
+  "message": {
+    "noOpenDocument": "No document is open",
+    "unknownReason": "Unknown reason",
+    "savefailed": "Save failed:"
+  },
+  "workflow": {
+    "selectDirPlaceholder": "Select workflow directory...",
+    "noSubdirectories": "Subdirectories must be created under the path 「 ComfyUI\\user\\default\\workflows\\Ps-Comfy-TiHeaveN\\ 」, and workflow files should be placed in each subdirectory.\nSubdirectories support naming in the format 「 01 Directory Name 」, which will be sorted numerically and only display 「 Directory Name 」;\nWorkflow files support naming in the format 「 01 Function [Remarks] 」, which will be sorted numerically and only display 「 Function 」.",
+    "noFilesInDir": "No files in this directory",
+    "loadingDirs": "Loading workflow directories...",
+    "loadingFiles": "Loading files in {dirName} directory...",
+    "loadDirFailed": "Failed to load directory",
+    "loadFileFailed": "Failed to load file",
+    "readingWorkflow": "Reading workflow..."
+  },
+  "button": {
+    "refresh": "Refresh",
+    "releaseModels": "Release models and cache",
+    "stop": "Stop",
+    "stopTasks": "Stop all server queues",
+    "run": "Run",
+    "settings": "Settings",
+    "save": "Save",
+    "close": "Close",
+    "randomize": "Random Seed",
+    "AutoExpandSelection": "Auto expand selection"
+  },
+  "status": {
+    "ready": "Ready",
+    "memoryUsage": "Memory usage",
+    "noSelection": "No selection",
+    "noRunnableWorkflow": "No runnable workflow",
+    "expandingSelection": "Expanding selection",
+    "creatingSelectionImage": "Creating selection image",
+    "uploading": "Uploading...",
+    "uploadFailed": "Upload failed",
+    "runningWorkflow": "Running workflow...",
+    "completed": "Completed",
+    "releasingModels": "Requesting to release models and cache...",
+    "releasedModels": "Request sent: Release models and cache",
+    "stoppingTask": "Stopping the queue...",
+    "stoppingTasks": "Stopping all queues...",
+    "stoppedTask": "Request sent: Stop the queue",
+    "stoppedTasks": "Request sent: Stop all server queues",
+    "serverNotConnected": "Failed to connect to Comfy...",
+    "serverConnected": "Connected to Comfy",
+    "settingsSaved": "Settings Saved"
+  },
+  "dialog": {
+    "settings": "Settings",
+    "comfyServerUrl": "Comfy Server URL",
+    "enterServerUrl": "Please enter Comfy server URL",
+    "selectLanguage": "Select Language (Get more languages after connecting to the Comfy server)",
+    "displayMemoryUsage": "Display memory usage"
+  },
+  "label": {
+    "executing": "Executing",
+    "queuing": "Queuing",
+    "serverQueue": "Remaining queue: "
+  },
+  "tooltip": {
+    "serverNotConnected": "Failed to connect to Comfy..."
+  },
+  "error": {
+    "uploadFailed": "Upload failed: ",
+    "noLoadImageNodes": "No LoadImage nodes found in the workflow",
+    "invalidWorkflow": "Invalid workflow object",
+    "invalidNodeId": "Invalid node ID",
+    "nodeNotFound": "Node with ID \"${nodeId}\" not found",
+    "nodeNoClassType": "Node \"${nodeId}\" does not contain class_type",
+    "nodeNoMetaTitle": "Node \"${nodeId}\" does not contain valid _meta.title",
+    "queuePromptFailed": "Failed to queue prompt:",
+    "invalidImageData": "Invalid image data",
+    "webSocketError": "WebSocket error:",
+    "webSocketUnexpectedClose": "WebSocket closed unexpectedly",
+    "readWorkflowFailed": "Failed to read workflow",
+    "unknownError": "Unknown error:",
+    "getDirsFailed": "Failed to get directories:",
+    "getFilesFailed": "Failed to get file list:",
+    "getQueueCountFailed": "Failed to get queue task count:",
+    "getQueueInfoFailed": "Failed to get queue information:",
+    "openDocumentFirst": "Please open a Photoshop document first",
+    "createSelectionFirst": "Please create a selection first",
+    "getTempFolderFailed": "Failed to get temporary folder: ",
+    "exportSelectionFailed": "Error exporting selection: ",
+    "noActiveDocument": "No active Photoshop document"
+  },
+  "reward": "Guys, if you like it, show your support with a reward~"
+}

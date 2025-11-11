@@ -1,0 +1,95 @@
+{
+    "languageNames": {
+        "zh-CN": "简体中文",
+        "zh-TW": "繁體中文",
+        "en-US": "English"
+    },
+    "message": {
+        "noOpenDocument": "没有打开任何文档",
+        "unknownReason": "未知原因",
+        "savefailed": "保存失败："
+    },
+    "workflow": {
+        "selectDirPlaceholder": "选择工作流目录...",
+        "noSubdirectories": "「 ComfyUI\\user\\default\\workflows\\Ps-Comfy-TiHeaveN\\ 」 路径下需创建子目录，工作流文件需放置在各子目录内。\n子目录支持「 01 目录名 」格式命名，将按数字排序且仅显示「 目录名 」；\n工作流文件支持「 01 功能 [备注] 」格式命名，将按数字排序且仅显示「 功能 」。",
+        "noFilesInDir": "该目录下没有文件",
+        "loadingDirs": "加载工作流目录...",
+        "loadingFiles": "加载{dirName}目录下的文件...",
+        "loadDirFailed": "加载目录失败",
+        "loadFileFailed": "加载文件失败",
+        "readingWorkflow": "读取工作流..."
+    },
+    "button": {
+        "refresh": "刷新",
+        "releaseModels": "释放模型及缓存",
+        "stop": "中止",
+        "stopTasks": "中止服务器所有队列",
+        "run": "执行",
+        "settings": "设置",
+        "save": "保存",
+        "close": "关闭",
+        "randomize": "随机数",
+        "AutoExpandSelection": "自动扩展选区"
+    },
+    "status": {
+        "ready": "准备就绪",
+        "memoryUsage": "内存占用",
+        "noSelection": "没有任何选区",
+        "noRunnableWorkflow": "没有可运行的工作流",
+        "expandingSelection": "扩展选区",
+        "creatingSelectionImage": "创建选区图像",
+        "uploading": "正在上传...",
+        "uploadFailed": "上传失败",
+        "runningWorkflow": "执行工作流...",
+        "completed": "完成",
+        "releasingModels": "请求释放模型及缓存...",
+        "releasedModels": "请求已发送:释放模型及缓存",
+        "stoppingTask": "正在中止当前队列...",
+        "stoppingTasks": "正在中止所有队列...",
+        "stoppedTask": "请求已发送:中止当前队列",
+        "stoppedTasks": "请求已发送:中止服务器所有队列",
+        "serverNotConnected": "未能连接Comfy...",
+        "serverConnected": "已连接Comfy",
+        "settingsSaved": "已保存设置"
+    },
+    "dialog": {
+        "settings": "设置",
+        "comfyServerUrl": "Comfy服务器地址",
+        "enterServerUrl": "请输入Comfy服务器地址",
+        "selectLanguage": "选择语言(连接Comfy服务器后获取更多语言)",
+        "displayMemoryUsage": "显示内存占用"
+    },
+    "label": {
+        "executing": "正在执行",
+        "queuing": "排队中",
+        "serverQueue": "剩余队列："
+    },
+    "tooltip": {
+        "serverNotConnected": "未能连接Comfy..."
+    },
+    "error": {
+        "uploadFailed": "上传失败：",
+        "noLoadImageNodes": "工作流中未找到任何LoadImage节点",
+        "invalidWorkflow": "无效的workflow对象",
+        "invalidNodeId": "无效的节点ID",
+        "nodeNotFound": "未找到ID为\"${nodeId}\"的节点",
+        "nodeNoClassType": "节点\"${nodeId}\"不包含class_type",
+        "nodeNoMetaTitle": "节点\"${nodeId}\"不包含有效的_meta.title",
+        "queuePromptFailed": "队列执行失败:",
+        "invalidImageData": "无效的图像数据",
+        "webSocketError": "WebSocket错误:",
+        "webSocketUnexpectedClose": "WebSocket意外关闭",
+        "readWorkflowFailed": "读取工作流失败",
+        "unknownError": "未知错误:",
+        "getDirsFailed": "获取目录失败:",
+        "getFilesFailed": "获取文件列表失败:",
+        "getQueueCountFailed": "获取队列任务数失败:",
+        "getQueueInfoFailed": "获取队列信息失败:",
+        "openDocumentFirst": "请先打开一个Photoshop文档",
+        "createSelectionFirst": "请先创建一个选区",
+        "getTempFolderFailed": "获取临时文件夹失败: ",
+        "exportSelectionFailed": "导出选区时发生错误: ",
+        "noActiveDocument": "没有活动的Photoshop文档"
+    },
+    "reward": "小伙伴们，觉得还不错就赞赏支持一下哦~"
+}
