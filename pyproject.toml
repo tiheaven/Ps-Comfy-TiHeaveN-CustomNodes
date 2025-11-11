@@ -8,8 +8,15 @@ authors = [
 dependencies = []
 requires-python = ">=3.9"
 readme = "README.md"
-license = {text = "MIT"}
+license = { file = "LICENSE" }
 
+[project.urls]
+Repository = "https://github.com/tiheaven/Ps-Comfy-TiHeaveN-CustomNodes"
 
 [tool.pdm]
 distribution = false
+
+[tool.comfy]
+PublisherId = "none"
+DisplayName = "Ps-Comfy-TiHeaveN-CustomNodes"
+requires-comfyui = ">=1.0.0"  # ComfyUI version compatibility
