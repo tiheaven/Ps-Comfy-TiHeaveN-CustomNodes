@@ -1,5 +1,5 @@
 [project]
-name = "Ps-Comfy-TiHeaveN"
+name = "Ps-Comfy-TiHeaveN-CustomNodes"
 description = "A communication bridge between Photoshop plugins and ComfyUI servers, enabling AI image generation by connecting PS plugins to Comfy servers for model inference and image rendering."
 version = "1.0.0"
 license = { file = "LICENSE" }
