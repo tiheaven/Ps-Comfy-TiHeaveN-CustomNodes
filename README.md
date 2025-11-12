@@ -87,6 +87,8 @@ Real-time Queue Status: When you have both the PS plugin and browser open, and i
 
 - **Recommendation**: Debug the workflow in ComfyUI in advance and only expose key parameters to the plugin;
 
+- [workflow example](workflows/)
+
 **Conflict Note**: The aigodlike-comfyui-translation node may restore node names, causing the above rules to fail. Please pay attention to this.
 
 # Multi-Language Support
@@ -210,6 +212,8 @@ Ps-Comfy-TiHeaveN-CustomNodes（ComfyUI 节点）需配合 Ps-Comfy-TiHeaveN-UXP
 - 若不指定参数（仅 #01 节点名），插件将显示整个节点的所有参数；
 
 - 建议：提前在 ComfyUI 中调试好工作流，仅暴露关键参数至插件；
+
+- [工作流示例](workflows/)
 
 **冲突提示**：aigodlike-comfyui-translation 翻译节点可能还原节点命名，导致上述规则失效，需注意。
 
