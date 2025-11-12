@@ -1,3 +1,136 @@
+`往下翻有中文文档`
+
+# Ps-Comfy-TiHeaveN-CustomNodes Documentation
+
+# Project Introduction
+
+Ps-Comfy-TiHeaveN-CustomNodes (ComfyUI Nodes) must be used in conjunction with Ps-Comfy-TiHeaveN-UXP-Plugin (Photoshop Plugin). Its core function is to perform local repainting in Photoshop. Through the linkage between the PS plugin and ComfyUI, it realizes automatic selection boundary expansion to enhance reference accuracy, while supporting sampler real-time preview, Smart Object return, and mask generation.
+
+![Image](images/2025-11-12-20-27-59.png)
+
+---
+
+- **ComfyUI Nodes**: After installation, there are no visual nodes. It only adds new communication routes to the Comfy Server.
+
+- **PS Plugin**: A mini-version of ComfyUI.
+
+- **Core Workflow**: PS selects a region → passes parameters to ComfyUI → real-time preview → Smart Object pasted back in original position (with mask).
+
+- **Principle**: The PS plugin accesses the relevant routes of the Comfy Server, obtains the modified workflow, and sends it back to the server for execution. The PS plugin will not modify or save the original workflow file in any way. There is no need to open a browser; detailed processes can be viewed in the ComfyUI console. Relevant examples are available under ComfyUI\script_examples.
+
+- **Highlights**: No need to select a specific layer or create a mask in advance. The content corresponding to the selection is the currently visible image content. The image will be transmitted to the server in lossless PNG (RGBA) format without quality degradation. Finally, the rectangular image with expanded boundaries is loaded through the "Load Image Node", and the selection is passed to this node as a mask.
+
+- *Note: Temporary transmitted images are stored in this folder `ComfyUI\input\Ps-Comfy-TiHeaveN`. Please clean them up regularly.*
+
+- **Other Small Functions**: Abort current queue, abort all queues, release model and cache occupancy, real-time queue status, and memory usage.
+
+Real-time Queue Status: When you have both the PS plugin and browser open, and image generation is in progress in the browser, the PS plugin will display queue information, including the queuing status (when you execute a queue in PS).
+
+![Image](images/2025-11-12-22-39-52.png)
+
+![Image](images/2025-11-12-22-42-05.png)
+
+![Image](images/2025-11-12-22-44-08.png)
+
+# Dependency Environment
+
+- **Photoshop**: ≥ 26.0.0
+
+- **ComfyUI**: The latest version is recommended. Compatibility of older versions needs to be tested by users.
+
+# Installation Tutorial
+
+## 1. Install PS Plugin
+
+1. Download the PS plugin Ps-Comfy-TiHeaveN-UXP-Plugin
+  - [Github](https://github.com/tiheaven/Ps-Comfy-TiHeaveN-CustomNodes/releases/download/v1.0.3/Ps-Comfy-TiHeaveN-UXP-Plugin.1.0.3.zip)
+
+  - [Baidu Netdisk](https://pan.baidu.com/s/51RoomjsOFPTjjSyONh5i_A)
+
+  - [Quark Netdisk](https://pan.quark.cn/s/5ffdb70ca4e3)
+
+2. Extract the file to the Photoshop plugin directory (e.g.: Adobe Photoshop 2025\Plug-ins);
+
+3. Ensure that the manifest.json file is directly visible in the extracted directory;
+
+4. Launch Photoshop, open the "Plug-ins" menu, and you will see this plugin.
+
+## 2. Install ComfyUI Nodes
+
+1. Navigate to the ComfyUI custom nodes directory: ComfyUI\custom_nodes\;
+
+2. Clone this repository:
+        `git clone https://github.com/tiheaven/Ps-Comfy-TiHeaveN-CustomNodes.git`
+
+3. Confirm the directory structure is ComfyUI\custom_nodes\Ps-Comfy-TiHeaveN-CustomNodes. If so, the installation is successful.
+
+# Workflow Setup
+
+## 1. Workflow Dedicated Folder Configuration
+
+1. Create the main directory: ComfyUI\user\default\workflows\Ps-Comfy-TiHeaveN\;
+
+2. Create subdirectories under the main directory, named using the rule: 01 Directory Name (sorted by number in the plugin, only "Directory Name" is displayed);
+
+3. Place workflow JSON files in the subdirectories, named using the rule: 01 Workflow Name [Description] (numbers are for sorting, "Workflow Name" is displayed in the plugin).
+
+![Image](images/2025-11-12-22-51-06.png)
+
+## 2. Existing Workflow Modification Rules
+
+- **Workflow Start and End Points**: Use "Load Image" as the start point and "Preview Image" as the end point (refer to the sample workflow for reference);
+
+- **Node Exposure Rule**:
+        Node naming format: #01 Node Name [Parameter1, Parameter2] (e.g.: #01 K Sampler [seed, denoise]). The plugin will only display the specified parameters (such as seed, denoise value);
+
+- If no parameters are specified (only #01 Node Name), the plugin will display all parameters of the node;
+
+- **Recommendation**: Debug the workflow in ComfyUI in advance and only expose key parameters to the plugin;
+
+**Conflict Note**: The aigodlike-comfyui-translation node may restore node names, causing the above rules to fail. Please pay attention to this.
+
+# Multi-Language Support
+
+- **Language Switching**: Languages can be switched in the plugin settings. Built-in languages: Simplified Chinese (default), Traditional Chinese, English;
+
+- **Language Pack Path**: ComfyUI\custom_nodes\Ps-Comfy-TiHeaveN-CustomNodes\locales\;
+
+- **Add New Language**: Copy en_US.json and rename it to <language code>.json (e.g.: de_DE.json), then translate the content using AI (the Traditional Chinese and English language packs of this plugin are both generated by Doubao Translation).
+
+# Other Instructions
+
+## Startup Verification
+
+After starting ComfyUI, if the console outputs the following content, it indicates that Ps-Comfy-TiHeaveN-CustomNodes has been loaded successfully:
+
+```plaintext
+
+[Ps-Comfy-TiHeaveN]: If you see me, it means the loading has been successfully completed.
+```
+
+## New Routes
+
+The plugin relies on the following routes to run. Ensure they are accessible:
+
+- `http://127.0.0.1:8188/workflows/`:
+        Used to obtain workflow files under `ComfyUI\user\default\workflows\Ps-Comfy-TiHeaveN\`;
+
+- `http://127.0.0.1:8188/ps-comfy-tiheaven-locales/`:
+        Used to obtain language packs.
+
+If using it on the cloud, ensure the above two routes are accessible normally.
+
+## About the Initial Version
+
+Multi-queue functionality was designed in the initial version, but actual testing revealed bugs and it was meaningless for the entire workflow, so the multi-queue function was removed.
+
+## Feedback Channel
+
+For questions or suggestions, please go to: [https://space.bilibili.com/399703773](https://space.bilibili.com/399703773) to provide feedback. This is my first time using Github, so I'm not familiar with many things.
+> （注：以上文档内容全部由 AI 生成翻译）
+
+
+
 # Ps-Comfy-TiHeaveN-CustomNodes 说明文档
 
 # 项目介绍
