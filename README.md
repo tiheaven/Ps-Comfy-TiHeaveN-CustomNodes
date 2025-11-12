@@ -127,7 +127,7 @@ Multi-queue functionality was designed in the initial version, but actual testin
 ## Feedback Channel
 
 For questions or suggestions, please go to: [https://space.bilibili.com/399703773](https://space.bilibili.com/399703773) to provide feedback. This is my first time using Github, so I'm not familiar with many things.
-> （注：以上文档内容全部由 AI 生成翻译）
+> （注：以上文档内容全部由豆包翻译）
 
 
 
