@@ -1,22 +1,17 @@
 [project]
 name = "Ps-Comfy-TiHeaveN"
-version = "0.1.0"
 description = "A communication bridge between Photoshop plugins and ComfyUI servers, enabling AI image generation by connecting PS plugins to Comfy servers for model inference and image rendering."
-authors = [
-    {name = "TiHeaveN", email = ""},
-]
-dependencies = []
-requires-python = ">=3.9"
-readme = "README.md"
+version = "1.0.0"
 license = { file = "LICENSE" }
 
 [project.urls]
 Repository = "https://github.com/tiheaven/Ps-Comfy-TiHeaveN-CustomNodes"
-
-[tool.pdm]
-distribution = false
+#  Used by Comfy Registry https://registry.comfy.org
 
 [tool.comfy]
-PublisherId = "none"
+PublisherId = "tiheaven"
 DisplayName = "Ps-Comfy-TiHeaveN-CustomNodes"
-requires-comfyui = ">=1.0.0"  # ComfyUI version compatibility
+Icon = ""
+includes = [] 
+"requires-comfyui" = ">=1.0.0"  # ComfyUI version compatibility
+
