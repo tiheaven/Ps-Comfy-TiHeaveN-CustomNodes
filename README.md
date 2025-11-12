@@ -20,8 +20,8 @@ Ps-Comfy-TiHeaveN-CustomNodes（ComfyUI 节点）需配合 Ps-Comfy-TiHeaveN-UXP
 - **亮点**：无需选中指定图层，也不用提前创建蒙版，选区对应的内容就是当前可见的图像内容。图像将以无损 PNG(RGBA) 格式传输至服务器，不会降低画质，最终将扩展边界后的矩形图像通过 “加载图像节点” 加载，再把选区作为遮罩传入了该节点。<br>
 - *注意: 传输的临时图像在此文件夹`ComfyUI\input\Ps-Comfy-TiHeaveN`，请定期清理。*
 
-- **其它小功能**：中止当前队列、中止全部队列、释放模型及缓存占用、队列实时状态、内存占用情况。
->队列实时状态：当你同时打开了PS插件和浏览器，浏览器中正在进行生图，此时PS插件中会显示队列的信息，包括排队状态(当你在PS中执行了队列)。
+- **其它小功能**：中止当前队列、中止全部队列、释放模型及缓存占用、队列实时状态、内存占用情况。<br><br>
+队列实时状态：当你同时打开了PS插件和浏览器，浏览器中正在进行生图，此时PS插件中会显示队列的信息，包括排队状态(当你在PS中执行了队列)。
 ![](images/2025-11-12-22-39-52.png)![](images/2025-11-12-22-42-05.png)![](images/2025-11-12-22-44-08.png)
 
 # 依赖环境
@@ -32,9 +32,12 @@ Ps-Comfy-TiHeaveN-CustomNodes（ComfyUI 节点）需配合 Ps-Comfy-TiHeaveN-UXP
 
 # 安装教程
 
-## 1. 安装 PS 插件
+## 1. 安装 PS 插件 
 
-1. 下载 Ps-Comfy-TiHeaveN-UXP-Plugin 压缩包；
+1. 下载 PS 插件 Ps-Comfy-TiHeaveN-UXP-Plugin
+  - [Github](https://github.com/tiheaven/Ps-Comfy-TiHeaveN-CustomNodes/releases/download/v1.0.3/Ps-Comfy-TiHeaveN-UXP-Plugin.1.0.3.zip)
+  - [百度网盘](https://pan.baidu.com/s/51RoomjsOFPTjjSyONh5i_A)
+  - [夸克网盘](https://pan.quark.cn/s/5ffdb70ca4e3)
 
 2. 解压至 Photoshop 插件目录（例：Adobe Photoshop 2025\Plug-ins）；
 
