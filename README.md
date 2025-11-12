@@ -2,7 +2,7 @@
 
 # 项目介绍
 
-Ps-Comfy-TiHeaveN-CustomNodes（ComfyUI 节点）需配合 Ps-Comfy-TiHeaveN-UXP-Plugin（PS 插件）一起使用，主要功能为在Photoshop中进行局部重绘。通过 PS 插件与 ComfyUI 联动，实现选区自动扩展边界以提升参考度，同时支持采样器实时预览、智能对象返回及蒙版生成。
+Ps-Comfy-TiHeaveN-CustomNodes（ComfyUI 节点）需配合 Ps-Comfy-TiHeaveN-UXP-Plugin（PS 插件）一起使用，主要功能为在Photoshop中进行局部重绘。通过 PS 插件与 ComfyUI 联动，实现选区自动扩展边界以提升参考度，同时支持采样器实时预览、智能对象返回及蒙版生成。<br>
 ![](images/2025-11-12-20-26-44.png)
 
 ---
@@ -21,8 +21,8 @@ Ps-Comfy-TiHeaveN-CustomNodes（ComfyUI 节点）需配合 Ps-Comfy-TiHeaveN-UXP
 - *注意: 传输的临时图像在此文件夹`ComfyUI\input\Ps-Comfy-TiHeaveN`，请定期清理。*
 
 - **其它小功能**：中止当前队列、中止全部队列、释放模型及缓存占用、队列实时状态、内存占用情况。<br><br>
-队列实时状态：当你同时打开了PS插件和浏览器，浏览器中正在进行生图，此时PS插件中会显示队列的信息，包括排队状态(当你在PS中执行了队列)。
-![](images/2025-11-12-22-39-52.png)![](images/2025-11-12-22-42-05.png)![](images/2025-11-12-22-44-08.png)
+队列实时状态：当你同时打开了PS插件和浏览器，浏览器中正在进行生图，此时PS插件中会显示队列的信息，包括排队状态(当你在PS中执行了队列)。<br><br>
+![](images/2025-11-12-22-39-52.png)<br>![](images/2025-11-12-22-42-05.png)<br>![](images/2025-11-12-22-44-08.png)<br>
 
 # 依赖环境
 
@@ -41,8 +41,8 @@ Ps-Comfy-TiHeaveN-CustomNodes（ComfyUI 节点）需配合 Ps-Comfy-TiHeaveN-UXP
 
 2. 解压至 Photoshop 插件目录（例：Adobe Photoshop 2025\Plug-ins）；
 
-3. 确认解压后目录内可直接看到 manifest.json 文件；
-![](images/2025-11-12-23-13-20.png)
+3. 确认解压后目录内可直接看到 manifest.json 文件；<br>
+![](images/2025-11-12-23-13-20.png)<br>
 
 4. 进入 Photoshop ，打开 增效工具 菜单 即可看到此插件。
 
@@ -63,15 +63,15 @@ Ps-Comfy-TiHeaveN-CustomNodes（ComfyUI 节点）需配合 Ps-Comfy-TiHeaveN-UXP
 
 2. 在主目录下创建子目录，命名规则为 01 目录名（插件中按数字排序，仅显示 “目录名”）；
 
-3. 在子目录中放置工作流 JSON 文件，命名规则为 01 工作流名称 [描述]（数字用于排序，插件中显示 “工作流名称”）。
-![](images/2025-11-12-22-51-06.png)
+3. 在子目录中放置工作流 JSON 文件，命名规则为 01 工作流名称 [描述]（数字用于排序，插件中显示 “工作流名称”）。<br>
+![](images/2025-11-12-22-51-06.png)<br>
 
 ## 2. 现有工作流改造规则
 
 - **流程起点与终点**：以 “加载图像” 为起点，“预览图像” 为终点（可参考示例工作流）；
 
 - **节点暴露规则**：
-        节点命名格式：#01 节点名 [参数1,参数2]（例：#01 K采样器 [seed,denoise]），插件仅显示指定参数（如随机种、降噪值）；
+        节点命名格式：#01 节点名 [参数1,参数2]（例：#01 K采样器 [seed,denoise]），插件仅显示指定参数（如随机种、降噪值）；<br>
         ![](images/2025-11-12-22-53-38.png)
 
 - 若不指定参数（仅 #01 节点名），插件将显示整个节点的所有参数；
