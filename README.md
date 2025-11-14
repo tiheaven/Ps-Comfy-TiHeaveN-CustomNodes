@@ -18,7 +18,8 @@ Ps-Comfy-TiHeaveN-CustomNodes (ComfyUI Nodes) must be used in conjunction with P
 
 - **Principle**: The PS plugin accesses the relevant routes of the Comfy Server, obtains the modified workflow, and sends it back to the server for execution. The PS plugin will not modify or save the original workflow file in any way. There is no need to open a browser; detailed processes can be viewed in the ComfyUI console. Relevant examples are available under ComfyUI\script_examples.
 
-- **Highlights**: No need to select a specific layer or create a mask in advance. The content corresponding to the selection is the currently visible image content. The image will be transmitted to the server in lossless PNG (RGBA) format without quality degradation. Finally, the rectangular image with expanded boundaries is loaded through the "Load Image Node", and the selection is passed to this node as a mask.
+- **Highlights**: No need to select a specific layer or create a mask in advance. The content corresponding to the selection is the currently visible image content. The image will be transmitted to the server in lossless PNG (RGBA) format without quality degradation. Finally, the rectangular image with expanded boundaries is loaded through the "Load Image Node", and the selection is passed to this node as a mask.<br />
+Send the images and masks from Photoshop to Comfy; feel free to proceed with the rest of the workflow as you see fit.
 
 - *Note: Temporary transmitted images are stored in this folder `ComfyUI\input\Ps-Comfy-TiHeaveN`. Please clean them up regularly.*
 
@@ -157,6 +158,7 @@ Ps-Comfy-TiHeaveN-CustomNodes（ComfyUI 节点）需配合 Ps-Comfy-TiHeaveN-UXP
 - **原理**：PS插件访问Comfy服务器的相关路由，获取改造的工作流，发回服务器运行，PS插件不会对原工作流文件进行任何修改及保存，不用打开浏览器，可在ComfyUI的控制台查看详细进程。ComfyUI\script_examples下有相关示例
 
 - **亮点**：无需选中指定图层，也不用提前创建蒙版，选区对应的内容就是当前可见的图像内容。图像将以无损 PNG(RGBA) 格式传输至服务器，不会降低画质，最终将扩展边界后的矩形图像通过 “加载图像节点” 加载，再把选区作为遮罩传入了该节点。<br>
+图像和遮罩从PS端发送到Comfy，剩下的流程您自己发挥即可。
 - *注意: 传输的临时图像在此文件夹`ComfyUI\input\Ps-Comfy-TiHeaveN`，请定期清理。*
 
 - **其它小功能**：中止当前队列、中止全部队列、释放模型及缓存占用、队列实时状态、内存占用情况。<br><br>
