@@ -1,7 +1,7 @@
 `往下翻有中文文档`
 
 # Ps-Comfy-TiHeaveN-CustomNodes Documentation <br />
-
+![Image](images/ps-comfy-tiheaven_demo.gif)<br />
 - [Video Demo](images/ps-comfy-tiheaven_demo.mp4)
 
 # Project Introduction
@@ -141,6 +141,7 @@ For questions or suggestions, please go to: [https://space.bilibili.com/39970377
 
 
 # Ps-Comfy-TiHeaveN-CustomNodes 说明文档 <br />
+![Image](images/ps-comfy-tiheaven_demo.gif)<br />
 - [视频示例](images/ps-comfy-tiheaven_demo.mp4)
 
 # 项目介绍
