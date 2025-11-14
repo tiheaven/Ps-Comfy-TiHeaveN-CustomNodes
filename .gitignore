@@ -6,3 +6,4 @@ __pycache__/
 .pdm-python
 publishid.txt
 .vscode/
+*.zip
