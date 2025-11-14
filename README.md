@@ -43,7 +43,7 @@ Real-time Queue Status: When you have both the PS plugin and browser open, and i
 ## 1. Install PS Plugin
 
 1. Download the PS plugin Ps-Comfy-TiHeaveN-UXP-Plugin
-  - [Github](https://github.com/tiheaven/Ps-Comfy-TiHeaveN-CustomNodes/releases/download/v1.0.3/Ps-Comfy-TiHeaveN-UXP-Plugin.1.0.3.zip)
+  - [Github](https://github.com/tiheaven/Ps-Comfy-TiHeaveN-CustomNodes/releases/)
 
   - [Baidu Netdisk](https://pan.baidu.com/s/51RoomjsOFPTjjSyONh5i_A)
 
@@ -174,7 +174,7 @@ Ps-Comfy-TiHeaveN-CustomNodes（ComfyUI 节点）需配合 Ps-Comfy-TiHeaveN-UXP
 ## 1. 安装 PS 插件 
 
 1. 下载 PS 插件 Ps-Comfy-TiHeaveN-UXP-Plugin
-  - [Github](https://github.com/tiheaven/Ps-Comfy-TiHeaveN-CustomNodes/releases/download/v1.0.3/Ps-Comfy-TiHeaveN-UXP-Plugin.1.0.3.zip)
+  - [Github](https://github.com/tiheaven/Ps-Comfy-TiHeaveN-CustomNodes/releases/)
   - [百度网盘](https://pan.baidu.com/s/51RoomjsOFPTjjSyONh5i_A)
   - [夸克网盘](https://pan.quark.cn/s/5ffdb70ca4e3)
 
