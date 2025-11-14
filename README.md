@@ -2,7 +2,7 @@
 
 # Ps-Comfy-TiHeaveN-CustomNodes Documentation <br />
 ![Image](images/ps-comfy-tiheaven_demo.gif)<br />
-- [Video Demo](images/ps-comfy-tiheaven_demo.mp4)
+- [Video Demo](https://www.bilibili.com/video/BV17s1fB3E5v)<br />
 
 # Project Introduction
 
