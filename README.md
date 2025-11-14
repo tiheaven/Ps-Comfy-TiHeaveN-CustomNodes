@@ -1,7 +1,9 @@
 `往下翻有中文文档`
 
-# Ps-Comfy-TiHeaveN-CustomNodes Documentation
-
+# Ps-Comfy-TiHeaveN-CustomNodes Documentation <br />
+<video width="640" height="480" controls>
+  <source src="images/ps-comfy-tiheaven_demo.mp4" type="video/mp4">
+</video><br />
 # Project Introduction
 
 Ps-Comfy-TiHeaveN-CustomNodes (ComfyUI Nodes) must be used in conjunction with Ps-Comfy-TiHeaveN-UXP-Plugin (Photoshop Plugin). Its core function is to perform local repainting in Photoshop. Through the linkage between the PS plugin and ComfyUI, it realizes automatic selection boundary expansion to enhance reference accuracy, while supporting sampler real-time preview, Smart Object return, and mask generation.
@@ -138,7 +140,10 @@ For questions or suggestions, please go to: [https://space.bilibili.com/39970377
 
 
 
-# Ps-Comfy-TiHeaveN-CustomNodes 说明文档
+# Ps-Comfy-TiHeaveN-CustomNodes 说明文档 <br />
+<video width="640" height="480" controls>
+  <source src="images/ps-comfy-tiheaven_demo.mp4" type="video/mp4">
+</video><br />
 
 # 项目介绍
 
