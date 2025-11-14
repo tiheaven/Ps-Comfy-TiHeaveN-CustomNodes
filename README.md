@@ -128,6 +128,10 @@ Multi-queue functionality was designed in the initial version, but actual testin
 
 ## Feedback Channel
 
+### Known Issues
+
+1. Subgraphs are not supported; please expand the Subgraphs in the workflow.
+
 For questions or suggestions, please go to: [https://space.bilibili.com/399703773](https://space.bilibili.com/399703773) to provide feedback. This is my first time using Github, so I'm not familiar with many things.
 > （注：以上文档内容全部由豆包翻译）
 
@@ -253,5 +257,9 @@ Ps-Comfy-TiHeaveN-CustomNodes（ComfyUI 节点）需配合 Ps-Comfy-TiHeaveN-UXP
 初始设计了可进行多队列，实测有BUG，且对于整个流程无意义，于是去除了多队列功能。
 
 ## 反馈渠道
+
+### 已知问题
+
+1. 不支持Subgraph(子图)，请大家解开工作流中的Subgraph(子图)
 
 如有问题或建议，可前往：[https://space.bilibili.com/399703773](https://space.bilibili.com/399703773) 反馈，第一次用Github很多东西不熟。

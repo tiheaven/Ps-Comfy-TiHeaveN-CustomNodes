@@ -91,5 +91,6 @@
     "exportSelectionFailed": "Error exporting selection: ",
     "noActiveDocument": "No active Photoshop document"
   },
-  "reward": "Buy Me a Coffee"
+  "reward": "Buy Me a Coffee",
+  "wechatscan": "Scan with WeChat"
 }
