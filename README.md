@@ -3,7 +3,6 @@
 # Ps-Comfy-TiHeaveN-CustomNodes Documentation <br />
 ![Image](images/ps-comfy-tiheaven_demo.gif)<br />
 - [Video Demo](images/ps-comfy-tiheaven_demo.mp4)
-<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115500545940177&bvid=BV17s1fB3E5v&cid=33743637844&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
 
 # Project Introduction
 
@@ -143,8 +142,8 @@ For questions or suggestions, please go to: [https://space.bilibili.com/39970377
 
 # Ps-Comfy-TiHeaveN-CustomNodes 说明文档 <br />
 ![Image](images/ps-comfy-tiheaven_demo.gif)<br />
-- [视频示例](images/ps-comfy-tiheaven_demo.mp4)
-<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115500545940177&bvid=BV17s1fB3E5v&cid=33743637844&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+- [视频示例](https://www.bilibili.com/video/BV17s1fB3E5v)<br />
+
 # 项目介绍
 
 Ps-Comfy-TiHeaveN-CustomNodes（ComfyUI 节点）需配合 Ps-Comfy-TiHeaveN-UXP-Plugin（PS 插件）一起使用，主要功能为在Photoshop中进行局部重绘。通过 PS 插件与 ComfyUI 联动，实现选区自动扩展边界以提升参考度，同时支持采样器实时预览、智能对象返回及蒙版生成。<br>
