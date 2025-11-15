@@ -1,5 +1,9 @@
 `往下翻有中文文档`
 
+### [Ps-Comfy-TiHeaveN-UXP-Plugin 1.0.5](https://github.com/tiheaven/Ps-Comfy-TiHeaveN-CustomNodes/releases/) <br />
+也许修复了不能保存设置的bug，希望成功。<br />
+Maybe the bug that prevents saving settings has been fixed – hope it works.<br /><br />
+
 # Ps-Comfy-TiHeaveN-CustomNodes Documentation <br />
 ![Image](images/ps-comfy-tiheaven_demo.gif)<br />
 - [Video Demo](https://www.bilibili.com/video/BV17s1fB3E5v)<br />
