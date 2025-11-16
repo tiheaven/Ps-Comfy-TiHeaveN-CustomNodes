@@ -1,5 +1,16 @@
 `往下翻有中文文档`
 
+### [Ps-Comfy-TiHeaveN-UXP-Plugin 1.1.0](https://github.com/tiheaven/Ps-Comfy-TiHeaveN-CustomNodes/releases/) <br />
+  - 新增：所有列表类的节点可在插件中选择，包括模型、Lora等.
+  - 新增：多功能数字控件.
+  - 新增：自动随机种选项.
+  - 新增：自动载入上次选区.
+  - New: All list-type nodes are selectable in the plugin, including models, Lora, etc.
+  - New: Multi-functional numeric controls.
+  - New: Auto-random seed option.
+  - New: Auto-load the last selection.
+<br />![](images/2025-11-17-02-20-07.png)<br />
+
 ### [Ps-Comfy-TiHeaveN-UXP-Plugin 1.0.5](https://github.com/tiheaven/Ps-Comfy-TiHeaveN-CustomNodes/releases/) <br />
 也许修复了不能保存设置的bug，希望成功。<br />
 Maybe the bug that prevents saving settings has been fixed – hope it works.<br /><br />
