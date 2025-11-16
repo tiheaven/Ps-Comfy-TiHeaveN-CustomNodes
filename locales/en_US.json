@@ -29,7 +29,8 @@
     "save": "Save",
     "close": "Close",
     "randomize": "Random Seed",
-    "AutoExpandSelection": "Auto expand selection"
+    "AutoExpandSelection": "Auto expand selection",
+    "auto": "Auto"
   },
   "status": {
     "ready": "Ready",

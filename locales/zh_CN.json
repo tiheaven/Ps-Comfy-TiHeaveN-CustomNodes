@@ -29,7 +29,8 @@
         "save": "保存",
         "close": "关闭",
         "randomize": "随机数",
-        "AutoExpandSelection": "自动扩展选区"
+        "AutoExpandSelection": "自动扩展选区",
+        "auto": "自动"
     },
     "status": {
         "ready": "准备就绪",
