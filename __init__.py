@@ -53,17 +53,17 @@ def convert_workflow_format(original_workflow):
     def get_corresponding_input(ignored_node, output_type):
         """根据输出类型找到被忽略节点中对应的输入（如IMAGE输出对应image输入）"""
         # 常见输出类型与输入名称的映射（可根据实际节点类型扩展）
-        type_mapping = {
-            "IMAGE": "image",
-            "UPSCALE_MODEL": "upscale_model"
-        }
-        input_name = type_mapping.get(output_type, None)
+        # type_mapping = {
+        #     "IMAGE": "image",
+        #     "UPSCALE_MODEL": "upscale_model"
+        # }
+        # input_name = type_mapping.get(output_type, None)
 
-        if input_name:
-            # 查找名称匹配的输入
-            for input_data in ignored_node.get("inputs", []):
-                if input_data["name"] == input_name:
-                    return input_data
+        # if input_name:
+        #     # 查找名称匹配的输入
+        #     for input_data in ignored_node.get("inputs", []):
+        #         if input_data["name"] == input_name:
+        #             return input_data
         # 若未匹配到，默认返回第一个带链接的输入（兼容其他类型）
         for input_data in ignored_node.get("inputs", []):
             if input_data.get("link") is not None:
@@ -123,9 +123,10 @@ def convert_workflow_format(original_workflow):
         ]
         
         # 过滤widgets_values中的"randomize"
+        strings_to_filter = {"randomize", "fixed", "increment", "decrement"}
         filtered_widget_values = [
             v for v in node.get("widgets_values", []) 
-            if v != "randomize"
+            if v not in strings_to_filter  # 同时排除集合中的所有字符串
         ]
         
         # 检查是否有sampler_name和scheduler输入
@@ -391,7 +392,7 @@ def register_locale_routes():
 register_workflow_routes()
 register_locale_routes()
 
-logger.info(f"[Ps-Comfy-TiHeaveN]: If you see me, it means the loading has been successfully completed.")
+logger.info(f"[Ps-Comfy-TiHeaveN]: If you see me, it means the loading has been successfully completed, Please download the Photoshop plugin from https://github.com/tiheaven/Ps-Comfy-TiHeaveN-CustomNodes/releases")
 
 # 不注册任何节点（必须留空）
 NODE_CLASS_MAPPINGS = {}

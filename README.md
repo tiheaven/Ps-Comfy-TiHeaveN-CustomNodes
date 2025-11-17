@@ -1,5 +1,9 @@
 `往下翻有中文文档`
 
+### [Ps-Comfy-TiHeaveN-UXP-Plugin 1.1.1](https://github.com/tiheaven/Ps-Comfy-TiHeaveN-CustomNodes/releases/) <br />
+  - 修复：上一版本的已知bug，需同时更新最新节点包（1.0.2）
+  - Fixed: Known bugs in the previous version; the latest node package (1.0.2) needs to be updated simultaneously.
+
 ### [Ps-Comfy-TiHeaveN-UXP-Plugin 1.1.0](https://github.com/tiheaven/Ps-Comfy-TiHeaveN-CustomNodes/releases/) <br />
   - 新增：所有列表类的节点可在插件中选择，包括模型、Lora等.
   - 新增：多功能数字控件.
