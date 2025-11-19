@@ -10,7 +10,10 @@
   - Added: User-friendly prompts for failed server connections and prompts for mismatches between nodes and the plugin;
   - Added: The ability to clear text and load the last used text with one click in text-type node controls.
 <br />
-![](images/2025-11-20-02-10-05.png)<br />
+
+![Image](images/2025-11-20-02-10-05.png)
+
+<br />
 ### Ps-Comfy-TiHeaveN-CustomNodes 1.0.3 <br />
   - 修复：在部份ComfyUI整合包中保存工作流后，读取工作流时报错：unhashable type: 'list'，导致无法在插件中加载工作流
   - Fix: In some ComfyUI integrated packages, after saving a workflow, an error unhashable type: 'list' is thrown when loading the workflow, which prevents the workflow from being loaded in the plugins.
