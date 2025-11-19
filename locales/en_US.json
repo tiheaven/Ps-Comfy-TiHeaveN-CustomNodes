@@ -30,11 +30,14 @@
     "close": "Close",
     "randomize": "Random Seed",
     "AutoExpandSelection": "Auto expand selection",
-    "auto": "Auto"
+    "auto": "Auto",
+    "clear": "Clear",
+    "loadin": "Load"
   },
   "status": {
     "ready": "Ready",
-    "memoryUsage": "Memory usage",
+    "memoryUsage": "Memory",
+    "vmemoryUsage": "VRAM",
     "noSelection": "No selection",
     "noRunnableWorkflow": "No runnable workflow",
     "expandingSelection": "Expanding selection",
@@ -58,7 +61,8 @@
     "comfyServerUrl": "Comfy Server URL",
     "enterServerUrl": "Please enter Comfy server URL",
     "selectLanguage": "Select Language (Get more languages after connecting to the Comfy server)",
-    "displayMemoryUsage": "Display memory usage"
+    "displayMemoryUsage": "Display Memory Usage",
+    "displayvMemoryUsage": "Display VRAM Usage"
   },
   "label": {
     "executing": "Executing",
@@ -90,7 +94,12 @@
     "createSelectionFirst": "Please create a selection first",
     "getTempFolderFailed": "Failed to get temporary folder: ",
     "exportSelectionFailed": "Error exporting selection: ",
-    "noActiveDocument": "No active Photoshop document"
+    "noActiveDocument": "No active Photoshop document",
+    "installNode": "Please install the node Ps-Comfy-TiHeaveN-CustomNodes",
+    "serverInterfaceFailed": "The server-side interface execution failed. The node may not be installed; please install the node Ps-Comfy-TiHeaveN-CustomNodes!",
+    "requestFailed": "Request failed: {statusText} (Status code: {status})",
+    "nodeVersionTooLow": "Node version {currentVersion} < {requiredVersion}; please update the node version.",
+    "cannotConnectServer": "Failed to connect to the server. Please check if the server is powered on or the network is functioning properly!"
   },
   "reward": "Buy Me a Coffee",
   "wechatscan": "Scan with WeChat"

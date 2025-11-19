@@ -1,7 +1,7 @@
 [project]
 name = "Ps-Comfy-TiHeaveN-CustomNodes"
 description = "Need Ps-Comfy-TiHeaveN-UXP-Plugin v1.1.1; A communication bridge between Photoshop plugins and ComfyUI servers, enabling AI image generation by connecting PS plugins to Comfy servers for model inference and image rendering."
-version = "1.0.3"
+version = "1.0.4"
 license = { file = "LICENSE" }
 
 [project.urls]

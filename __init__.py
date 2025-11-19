@@ -334,6 +334,88 @@ async def handle_get_locale(request):
     except Exception as e:
         logger.error(f"读取语言文件失败: {str(e)}")
         return web.Response(status=500, text="读取语言文件时发生错误")
+    
+def get_app_version():
+    """
+    无依赖从pyproject.toml读取version字段
+    仅解析[project]块下的version = "x.x.x"格式，支持单/双引号、行内空格、行尾注释
+    """
+    # 获取pyproject.toml的路径（与当前节点文件同级）
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    toml_path = os.path.join(current_dir, "pyproject.toml")
+
+    # 检查文件是否存在
+    if not os.path.exists(toml_path):
+        logger.error(f"未找到pyproject.toml文件，路径：{toml_path}")
+        return "0.0.0"
+
+    # 标记是否进入[project]块
+    in_project_block = False
+    version = "0.0.0"
+
+    try:
+        with open(toml_path, "r", encoding="utf-8") as f:
+            for line_num, line in enumerate(f, 1):
+                # 去除行首行尾空白（空格、制表符、换行）
+                stripped_line = line.strip()
+
+                # 跳过空行和注释行（TOML注释以#开头）
+                if not stripped_line or stripped_line.startswith("#"):
+                    continue
+
+                # 检测[project]块的开始
+                if stripped_line.startswith("[project]"):
+                    in_project_block = True
+                    continue
+
+                # 检测其他块的开始（退出[project]块）
+                if stripped_line.startswith("[") and in_project_block:
+                    break
+
+                # 仅在[project]块内解析version字段
+                if in_project_block and stripped_line.lower().startswith("version"):
+                    # 分割键值对：处理"version = x.x.x" "version= x.x.x"等格式
+                    key_value = stripped_line.split("=", 1)
+                    if len(key_value) != 2:
+                        continue
+
+                    # 提取值部分并清理（去除空格、引号、注释）
+                    value_part = key_value[1].strip()
+                    # 去除行尾注释（如 version = "1.0.0" # 版本号）
+                    if "#" in value_part:
+                        value_part = value_part.split("#", 1)[0].strip()
+                    # 去除单/双引号
+                    value_part = value_part.strip("'\"")
+
+                    # 验证版本号非空（简单校验）
+                    if value_part and "." in value_part:
+                        version = value_part
+                        #logger.info(f"从pyproject.toml读取版本号成功：{version}")
+                    break
+
+    except Exception as e:
+        logger.error(f"解析pyproject.toml失败：{str(e)}")
+        version = "0.0.0"
+
+    return version
+
+async def handle_get_appinfo(request):
+    """处理/ps-comfy-tiheaven-appinfo路由请求，返回版本号JSON"""
+    version = get_app_version()
+    return web.json_response({"version": version})
+
+def register_appinfo_route():
+    """注册路由到ComfyUI的PromptServer"""
+    server = PromptServer.instance
+    if not server:
+        logger.error("注册路由失败：未找到 PromptServer 实例")
+        return
+
+    # 定义并注册路由
+    appinfo_routes = web.RouteTableDef()
+    appinfo_routes.get("/ps-comfy-tiheaven-appinfo")(handle_get_appinfo)
+    PromptServer.instance.app.router.add_routes(appinfo_routes)
+    logger.info("成功注册无依赖版路由：/ps-comfy-tiheaven-appinfo")
         
 def register_workflow_routes():
     """向 ComfyUI 服务器注册工作流相关路由"""
@@ -374,6 +456,7 @@ def register_locale_routes():
 # 初始化时自动注册路由
 register_workflow_routes()
 register_locale_routes()
+register_appinfo_route()
 
 logger.info(f"[Ps-Comfy-TiHeaveN]: If you see me, it means the loading has been successfully completed, Please download the Photoshop plugin from https://github.com/tiheaven/Ps-Comfy-TiHeaveN-CustomNodes/releases")
 

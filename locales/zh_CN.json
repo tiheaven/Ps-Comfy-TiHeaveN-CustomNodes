@@ -30,11 +30,14 @@
         "close": "关闭",
         "randomize": "随机数",
         "AutoExpandSelection": "自动扩展选区",
-        "auto": "自动"
+        "auto": "自动",
+        "clear": "清空",
+        "loadin": "载入"
     },
     "status": {
         "ready": "准备就绪",
-        "memoryUsage": "内存占用",
+        "memoryUsage": "内存",
+        "vmemoryUsage": "显存",
         "noSelection": "没有任何选区",
         "noRunnableWorkflow": "没有可运行的工作流",
         "expandingSelection": "扩展选区",
@@ -58,7 +61,8 @@
         "comfyServerUrl": "Comfy服务器地址",
         "enterServerUrl": "请输入Comfy服务器地址",
         "selectLanguage": "选择语言(连接Comfy服务器后获取更多语言)",
-        "displayMemoryUsage": "显示内存占用"
+        "displayMemoryUsage": "显示内存占用",
+        "displayvMemoryUsage": "显示显存占用"
     },
     "label": {
         "executing": "正在执行",
@@ -90,7 +94,12 @@
         "createSelectionFirst": "请先创建一个选区",
         "getTempFolderFailed": "获取临时文件夹失败: ",
         "exportSelectionFailed": "导出选区时发生错误: ",
-        "noActiveDocument": "没有活动的Photoshop文档"
+        "noActiveDocument": "没有活动的Photoshop文档",
+        "installNode": "请安装节点Ps-Comfy-TiHeaveN-CustomNodes",
+        "serverInterfaceFailed": "服务器端接口执行失败，可能未安装节点请安装节点Ps-Comfy-TiHeaveN-CustomNodes！",
+        "requestFailed": "请求失败：{statusText}（状态码：{status}）",
+        "nodeVersionTooLow": "节点版本 {currentVersion} < {requiredVersion} ，请更新节点版本.",
+        "cannotConnectServer": "无法连接到服务器，请检查服务器是否开机或网络是否正常！"
     },
     "reward": "赞赏支持",
     "wechatscan": "微信扫码"

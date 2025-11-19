@@ -30,11 +30,14 @@
     "close": "關閉",
     "randomize": "隨機數",
     "AutoExpandSelection": "自動擴展選區",
-    "auto": "自動"
+    "auto": "自動",
+    "clear": "清空",
+    "loadin": "載入"
   },
   "status": {
     "ready": "準備就緒",
-    "memoryUsage": "記憶體佔用",
+    "memoryUsage": "記憶體",
+    "vmemoryUsage": "顯存",
     "noSelection": "沒有任何選區",
     "noRunnableWorkflow": "沒有可運行的工作流",
     "expandingSelection": "擴展選區",
@@ -58,7 +61,8 @@
     "comfyServerUrl": "Comfy服務器地址",
     "enterServerUrl": "請輸入Comfy服務器地址",
     "selectLanguage": "選擇語言(連接 Comfy 伺服器後獲取更多語言)",
-    "displayMemoryUsage": "顯示記憶體佔用"
+    "displayMemoryUsage": "顯示記憶體佔用",
+    "displayvMemoryUsage": "顯示顯存佔用"
   },
   "label": {
     "executing": "正在執行",
@@ -90,7 +94,12 @@
     "createSelectionFirst": "請先創建一個選區",
     "getTempFolderFailed": "獲取臨時文件夾失敗: ",
     "exportSelectionFailed": "導出選區時發生錯誤: ",
-    "noActiveDocument": "沒有活動的Photoshop文件"
+    "noActiveDocument": "沒有活動的Photoshop文件",
+    "installNode": "請安裝節點Ps-Comfy-TiHeaveN-CustomNodes",
+    "serverInterfaceFailed": "伺服器端介面執行失敗，可能未安裝節點，請安裝節點Ps-Comfy-TiHeaveN-CustomNodes！",
+    "requestFailed": "請求失敗：{statusText}（狀態碼：{status}）",
+    "nodeVersionTooLow": "節點版本 {currentVersion} < {requiredVersion}，請更新節點版本。",
+    "cannotConnectServer": "無法連接到伺服器，請檢查伺服器是否開機或網路是否正常！"
   },
   "reward": "Buy Me a Coffee",
   "wechatscan": "微信掃碼"
