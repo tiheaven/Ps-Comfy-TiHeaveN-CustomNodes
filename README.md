@@ -1,5 +1,9 @@
 `往下翻有中文文档`
 
+### Ps-Comfy-TiHeaveN-CustomNodes 1.0.3 <br />
+  - 修复：在部份ComfyUI整合包中保存工作流后，读取工作流时报错：unhashable type: 'list'，导致无法在插件中加载工作流
+  - Fix: In some ComfyUI integrated packages, after saving a workflow, an error unhashable type: 'list' is thrown when loading the workflow, which prevents the workflow from being loaded in the plugins.
+
 ### [Ps-Comfy-TiHeaveN-UXP-Plugin 1.1.1](https://github.com/tiheaven/Ps-Comfy-TiHeaveN-CustomNodes/releases/) <br />
   - 修复：上一版本的已知bug，需同时更新最新节点包（1.0.2）
   - Fixed: Known bugs in the previous version; the latest node package (1.0.2) needs to be updated simultaneously.
@@ -20,7 +24,6 @@
 Maybe the bug that prevents saving settings has been fixed – hope it works.<br /><br />
 
 # Ps-Comfy-TiHeaveN-CustomNodes Documentation <br />
-![Image](images/ps-comfy-tiheaven_demo.gif)<br />
 - [Video Demo](https://www.bilibili.com/video/BV17s1fB3E5v)<br />
 
 # Project Introduction
@@ -160,7 +163,6 @@ For questions or suggestions, please go to: [https://space.bilibili.com/39970377
 
 
 # Ps-Comfy-TiHeaveN-CustomNodes 说明文档 <br />
-![Image](images/ps-comfy-tiheaven_demo.gif)<br />
 - [视频示例](https://www.bilibili.com/video/BV17s1fB3E5v)<br />
 
 # 项目介绍

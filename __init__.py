@@ -45,26 +45,11 @@ def convert_workflow_format(original_workflow):
         # 忽略mode=4的节点和Reroute节点
         if node.get("mode") == 4 or node.get("type") == "Reroute":
             ignore_node_ids.add(node_id)
-            #logger.info(f"发现被忽略的节点，ID: {node_id}, 类型: {node.get('type')}")
         else:
             normal_node_ids.add(node_id)
 
     # 辅助函数：根据输出类型匹配被忽略节点的对应输入
     def get_corresponding_input(ignored_node, output_type):
-        """根据输出类型找到被忽略节点中对应的输入（如IMAGE输出对应image输入）"""
-        # 常见输出类型与输入名称的映射（可根据实际节点类型扩展）
-        # type_mapping = {
-        #     "IMAGE": "image",
-        #     "UPSCALE_MODEL": "upscale_model"
-        # }
-        # input_name = type_mapping.get(output_type, None)
-
-        # if input_name:
-        #     # 查找名称匹配的输入
-        #     for input_data in ignored_node.get("inputs", []):
-        #         if input_data["name"] == input_name:
-        #             return input_data
-        # 若未匹配到，默认返回第一个带链接的输入（兼容其他类型）
         for input_data in ignored_node.get("inputs", []):
             if input_data.get("link") is not None:
                 return input_data
@@ -72,28 +57,27 @@ def convert_workflow_format(original_workflow):
 
     # 辅助函数：递归找到上游第一个正常节点（穿透被忽略节点）
     def find_original_source(link_id):
-        """根据链接ID查找最终的正常节点源（跳过所有被忽略节点）"""
-        # 找到链接对应的源节点信息和输出类型
         for link in links:
             if link[0] == link_id:  # link[0]是link_id
                 source_node_id = str(link[1])  # 源节点ID
                 source_out_idx = link[2]       # 源节点输出索引
                 output_type = link[5]          # 链接类型（即源节点输出类型）
 
-                # 如果源节点是正常节点，直接返回
                 if source_node_id in normal_node_ids:
                     return [source_node_id, source_out_idx]
-                # 如果源节点是被忽略节点，递归查找其对应输入的源
                 elif source_node_id in ignore_node_ids:
-                    # 找到被忽略节点
                     source_node = next((n for n in nodes if str(n["id"]) == source_node_id), None)
                     if not source_node:
                         return None
-                    # 根据输出类型找到被忽略节点对应的输入
                     corresponding_input = get_corresponding_input(source_node, output_type)
                     if corresponding_input and corresponding_input.get("link") is not None:
                         return find_original_source(corresponding_input["link"])
         return None
+
+    # 新增辅助函数：检查值是否为字典且包含列表类型的值
+    def has_list_in_dict(value):
+        # 若值是字典，且字典中至少有一个值是列表，则返回True
+        return isinstance(value, dict) and any(isinstance(v, list) for v in value.values())
 
     # 第二步：只添加正常节点（mode≠4），并处理输入链接、title、localized_names和types
     for node in nodes:
@@ -102,69 +86,83 @@ def convert_workflow_format(original_workflow):
             continue  # 跳过被忽略节点
 
         class_type = node["type"]
-        # 处理title：优先取node的title，无则取"Node name for S&R"
+        # 处理title
         node_title = node.get("title")
         if node_title is None:
-            # 从properties中获取备用名称
             properties = node.get("properties", {})
             node_title = properties.get("Node name for S&R", "")
             if not node_title:
                 node_title = class_type
         
         inputs = {}
-        # 初始化localized_names和types集合
         localized_names = []
         types = []
         
         # 收集带widget的输入名称（按输入顺序）
         widget_input_names = [
             inp["name"] for inp in node.get("inputs", [])
-            if inp.get("widget") is not None  # 只包含有widget的输入
+            if inp.get("widget") is not None
         ]
         
         # 过滤widgets_values中的"randomize"
         strings_to_filter = {"randomize", "fixed", "increment", "decrement"}
         filtered_widget_values = [
             v for v in node.get("widgets_values", []) 
-            if v not in strings_to_filter  # 同时排除集合中的所有字符串
+            #if v not in strings_to_filter
+            if not isinstance(v, list) and v not in strings_to_filter  # 新增列表类型判断
         ]
-        
-        # 检查是否有sampler_name和scheduler输入
-        has_sampler_name = any(inp["name"] == "sampler_name" for inp in node.get("inputs", []))
-        has_scheduler = any(inp["name"] == "scheduler" for inp in node.get("inputs", []))
         
         for input_data in node.get("inputs", []):
             input_name = input_data["name"]
             
-            # 处理localized_names：收集name与label/localized_name的映射
+            # -------------------------- 修正后的过滤逻辑 --------------------------
+            # 当字段值为字典，且字典中包含列表时，忽略该字段（不限制字段名）
+            # 1. 先获取当前字段的值（可能来自link或widget）
+            current_value = None
+            if input_data.get("link") is not None:
+                # 从链接获取值（通常是上游节点引用，格式为[节点ID, 输出索引]）
+                original_source = find_original_source(input_data["link"])
+                current_value = original_source
+            else:
+                # 从widget获取值
+                if input_data.get("widget") is not None:
+                    try:
+                        widget_index = widget_input_names.index(input_name)
+                        if widget_index < len(filtered_widget_values):
+                            current_value = filtered_widget_values[widget_index]
+                    except ValueError:
+                        pass  # 不在widget列表中，不处理
+            
+            # 2. 检查是否符合过滤条件：值是字典，且字典中包含列表
+            if has_list_in_dict(current_value):
+                logger.info(f"节点 {node_id} 的字段 {input_name} 值为含列表的字典，已跳过")
+                continue  # 跳过当前字段的所有处理
+            # -----------------------------------------------------------------
+
+            # 处理localized_names
             label = input_data.get("label")
             localized_name = input_data.get("localized_name")
-            # 优先取label，无label则取localized_name
             display_value = label if label is not None else localized_name
             if display_value is not None:
                 localized_names.append({input_name: display_value})
             
-            # 处理types：收集带widget的输入的name与type的映射
+            # 处理types
             if input_data.get("widget") is not None:
                 input_type = input_data.get("type")
                 if input_type is not None:
                     types.append({input_name: input_type})
             
-            # 处理输入链接或widget值
+            # 处理输入链接或widget值（已通过过滤逻辑的字段才会执行到这里）
             if input_data.get("link") is not None:
-                # 递归找到最终的正常节点源
                 original_source = find_original_source(input_data["link"])
                 if original_source:
-                    inputs[input_name] = original_source
+                    inputs[input_name] = tuple(original_source)
                 else:
                     logger.warning(f"节点 {node_id} 的输入 {input_name} 无法找到有效源，已忽略")
             else:
-                # 处理widgets值（使用过滤后的值）
-                if input_data.get("widget") is not None:  # 确保是带widget的输入
+                if input_data.get("widget") is not None:
                     try:
-                        # 从带widget的输入名称列表中获取索引
                         widget_index = widget_input_names.index(input_name)
-                        # 从过滤后的值中取值（确保索引有效）
                         if widget_index < len(filtered_widget_values):
                             inputs[input_name] = filtered_widget_values[widget_index]
                         else:
@@ -172,40 +170,25 @@ def convert_workflow_format(original_workflow):
                     except ValueError as e:
                         logger.warning(f"节点 {node_id} 的输入 {input_name} 不在widget输入列表中: {e}")
         
-        # 构建_meta信息（包含title）
+        # 构建_meta信息
         _meta = {"title": node_title} if node_title else {}
         
-        # 处理SAMPLERS和SCHEDULERS
-        if has_sampler_name:
-            inputs["_samplers"] = comfy.samplers.KSampler.SAMPLERS
-        if has_scheduler:
-            inputs["_schedulers"] = comfy.samplers.KSampler.SCHEDULERS
-        
-        # 将localized_names和types暂存到inputs中，后续移至顶层
+        # 暂存localized_names和types
         inputs["_localized_names"] = localized_names
         inputs["_types"] = types
         
-        # 添加节点到构建器，将_meta暂存到inputs中
+        # 添加节点到构建器
         builder.node(class_type, id=node_id, _meta=_meta, **inputs)
 
-    # 第三步：调整_meta、localized_names、types、SAMPLERS和SCHEDULERS的位置，使其与class_type同级
+    # 第三步：调整_meta等字段位置
     finalized = builder.finalize()
     for node_id, node_data in finalized.items():
-        # 从inputs中取出_meta并移到顶层
         if "_meta" in node_data["inputs"]:
             node_data["_meta"] = node_data["inputs"].pop("_meta")
-        # 从inputs中取出localized_names并移到顶层
         if "_localized_names" in node_data["inputs"]:
             node_data["localized_names"] = node_data["inputs"].pop("_localized_names")
-        # 从inputs中取出types并移到顶层
         if "_types" in node_data["inputs"]:
             node_data["types"] = node_data["inputs"].pop("_types")
-        # 从inputs中取出SAMPLERS并移到顶层
-        if "_samplers" in node_data["inputs"]:
-            node_data["samplers"] = node_data["inputs"].pop("_samplers")
-        # 从inputs中取出SCHEDULERS并移到顶层
-        if "_schedulers" in node_data["inputs"]:
-            node_data["schedulers"] = node_data["inputs"].pop("_schedulers")
     
     return finalized
 
