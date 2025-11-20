@@ -2,11 +2,11 @@
 
 ### [Ps-Comfy-TiHeaveN-UXP-Plugin 1.1.2](https://github.com/tiheaven/Ps-Comfy-TiHeaveN-CustomNodes/releases/) & Ps-Comfy-TiHeaveN-CustomNodes 1.0.4 <br />
   - 修复：PS插件中，服务器地址末尾若有斜杆则连不上服务器；
-  - 新增：显存占用，在设置里打开即可，内存和显示数据均从服务器取出；
+  - 新增：显存占用，在设置里打开即可，内存和显存数据均从服务器取出；
   - 新增：未能连接服务器的友好提示、节点与插件不匹配的提示；
   - 新增：在文本类型的节点控件可以一键清除和载入上次的文本。
   - Fixed: In the PS plugin, the connection to the server failed if there was a trailing slash at the end of the server address;
-  - Added: The VRAM usage feature, which can be enabled in the settings; both memory and display data are retrieved from the server;
+  - Added: The VRAM usage feature, which can be enabled in the settings; both memory and video memory data are retrieved from the server;
   - Added: User-friendly prompts for failed server connections and prompts for mismatches between nodes and the plugin;
   - Added: The ability to clear text and load the last used text with one click in text-type node controls.
 <br />
