@@ -4,7 +4,11 @@ import logging
 from aiohttp import web
 import folder_paths
 from server import PromptServer  # 导入 ComfyUI 服务器实例
-import comfy
+
+from PIL import Image
+import io
+import mimetypes
+
 from comfy_execution.graph_utils import GraphBuilder, Node  # 导入graph_utils中的工具类
 
 # 配置日志
@@ -43,7 +47,14 @@ def convert_workflow_format(original_workflow):
     for node in nodes:
         node_id = str(node["id"])
         # 忽略mode=4的节点和Reroute节点
-        if node.get("mode") == 4 or node.get("type") == "Reroute":
+        ignore_conditions = [
+            node.get("mode") == 4,
+            node.get("type") == "Reroute",
+            # 新增：判断inputs和outputs是否均为空数组
+            (node.get("inputs", []) == [] and node.get("outputs", []) == [])
+        ]
+        # 满足任意一个忽略条件则加入忽略集合
+        if any(ignore_conditions):
             ignore_node_ids.add(node_id)
         else:
             normal_node_ids.add(node_id)
@@ -93,6 +104,8 @@ def convert_workflow_format(original_workflow):
             node_title = properties.get("Node name for S&R", "")
             if not node_title:
                 node_title = class_type
+
+        node_order = node.get("order")
         
         inputs = {}
         localized_names = []
@@ -135,7 +148,7 @@ def convert_workflow_format(original_workflow):
             
             # 2. 检查是否符合过滤条件：值是字典，且字典中包含列表
             if has_list_in_dict(current_value):
-                logger.info(f"节点 {node_id} 的字段 {input_name} 值为含列表的字典，已跳过")
+                #logger.info(f"节点 {node_id} 的字段 {input_name} 值为含列表的字典，已跳过")
                 continue  # 跳过当前字段的所有处理
             # -----------------------------------------------------------------
 
@@ -171,7 +184,11 @@ def convert_workflow_format(original_workflow):
                         logger.warning(f"节点 {node_id} 的输入 {input_name} 不在widget输入列表中: {e}")
         
         # 构建_meta信息
-        _meta = {"title": node_title} if node_title else {}
+        _meta = {}
+        if node_title:
+            _meta["title"] = node_title
+        if node_order is not None:  # 仅当order存在时添加，避免多余的None值
+            _meta["order"] = node_order
         
         # 暂存localized_names和types
         inputs["_localized_names"] = localized_names
@@ -404,6 +421,132 @@ async def handle_get_appinfo(request):
     version = get_app_version()
     return web.json_response({"version": version})
 
+# 获取input目录的函数
+def get_input_dir():
+    """获取ComfyUI的input目录"""
+    # 优先通过folder_paths获取input目录
+    input_dir = folder_paths.get_directory_by_type("input")
+    if not input_dir:
+        # 兼容处理，直接在base_path下查找input目录
+        input_dir = os.path.join(folder_paths.base_path, "input")
+    
+    # 确保目录存在
+    os.makedirs(input_dir, exist_ok=True)
+    return input_dir
+
+# 处理缩略图的路由处理函数
+async def handle_get_thumbnail(request):
+    """处理获取缩略图的请求（/ps-comfy-tiheaven-get-thumbnail）"""
+    filename = request.match_info.get('filename', '')
+    if not filename:
+        return web.Response(status=400, text="缺少filename路径参数")
+    
+    input_dir = get_input_dir()
+    
+    # 安全验证：防止路径遍历攻击
+    filepath = os.path.abspath(os.path.join(input_dir, filename))
+    if os.path.commonpath((input_dir, filepath)) != input_dir:
+        return web.Response(status=403, text="访问被拒绝：无效路径")
+    
+    # 检查文件是否存在
+    if not os.path.isfile(filepath):
+        return web.Response(status=404, text="图片文件不存在")
+    
+    # 检查文件是否为图片类型
+    content_type = mimetypes.guess_type(filename)[0]
+    if not content_type or not content_type.startswith('image/'):
+        return web.Response(status=400, text="指定文件不是图片类型")
+    
+    try:
+        with Image.open(filepath) as img:
+            original_exif = img.info.get('exif', b'')
+            # 处理不同通道情况
+            if img.mode == "RGBA":
+                GRAY_BG_VALUE = 50  # 深灰色背景的RGB值（0=黑，255=白）
+                AREA_OPACITY_RATIO = 0.25  # A通道区域的原图透明度比例（1=全透，0=完全不透明）
+                # 1. 创建不透明的灰色背景（底层）
+                gray_bg = Image.new('RGB', img.size, (GRAY_BG_VALUE, GRAY_BG_VALUE, GRAY_BG_VALUE))
+                # 2. 提取原图的RGB通道和Alpha通道
+                rgb_img = img.convert('RGB')  # 纯原图RGB（无Alpha）
+                alpha_channel = img.split()[3]  # 原图Alpha通道（0=全透，255=完全不透明）
+
+                # 3. 重构混合掩码：核心修正逻辑
+                # 非A通道（Alpha=255）→ 掩码=255（显示完全不透明原图）
+                # A通道（Alpha=0~255）→ 掩码=255 - Alpha → 随透明程度渐变，再乘以自定义透明度
+                def calculate_mask(x):
+                    if x == 255:  # 非A通道，强制显示原图
+                        return 255
+                    # A通道：用255-x得到透明区域的渐变值，再乘以自定义透明度
+                    return int((255 - x) * AREA_OPACITY_RATIO)
+                mixed_alpha = alpha_channel.point(calculate_mask)
+                
+                # 4. 像素级混合：按修正后的掩码实现叠加效果
+                processed_img = Image.composite(rgb_img, gray_bg, mixed_alpha)
+            elif img.mode in ["L", "LA"]:
+                # 只有alpha通道或灰度+alpha通道，转换为RGB
+                gray_value = 100  # 深灰色
+                white = 255       # 白色
+                
+                # 创建RGB图像
+                rgb_img = Image.new('RGB', img.size, (gray_value, gray_value, gray_value))
+                
+                # 提取alpha通道（如果存在）
+                if img.mode == "LA":
+                    _, a = img.split()
+                else:  # "L"模式，将灰度视为alpha
+                    a = img
+                
+                # 创建白色图层并应用alpha遮罩
+                white_layer = Image.new('RGB', img.size, (white, white, white))
+                rgb_img.paste(white_layer, mask=a)
+                processed_img = rgb_img
+            else:
+                # 其他模式直接转换为RGB
+                processed_img = img.convert("RGB")
+            
+            # 计算缩略图尺寸（长边为120px）
+            width, height = processed_img.size
+            if width > height:
+                new_width = 120
+                new_height = int((height / width) * new_width)
+            else:
+                new_height = 120
+                new_width = int((width / height) * new_height)
+            
+            # 生成缩略图
+            thumbnail = processed_img.resize((new_width, new_height), Image.Resampling.LANCZOS)
+            
+            # 保存为JPG到内存缓冲区
+            buffer = io.BytesIO()
+            thumbnail.save(buffer, format = "JPEG" , quality = 90, exif = original_exif)
+            buffer.seek(0)
+            
+            # 返回处理后的图片
+            return web.Response(
+                body=buffer.read(),
+                content_type="image/jpeg",
+                headers={"Content-Disposition": f"filename=\"thumbnail_{filename}.jpg\""}
+            )
+    
+    except Exception as e:
+        logger.error(f"处理缩略图失败: {str(e)}")
+        return web.Response(status=500, text="处理图片时发生错误")
+
+# 注册新路由的函数
+def register_thumbnail_route():
+    """注册缩略图路由到ComfyUI的PromptServer"""
+    server = PromptServer.instance
+    if not server:
+        logger.error("注册缩略图路由失败：未找到 PromptServer 实例")
+        return
+
+    # 定义并注册路由
+    thumbnail_routes = web.RouteTableDef()
+    thumbnail_routes.get("/ps-comfy-tiheaven-get-thumbnail/{filename:.*}")(handle_get_thumbnail)
+    PromptServer.instance.app.router.add_routes(thumbnail_routes)
+    #logger.info("成功注册缩略图路由：/ps-comfy-tiheaven-get-thumbnail")
+
+
 def register_appinfo_route():
     """注册路由到ComfyUI的PromptServer"""
     server = PromptServer.instance
@@ -415,7 +558,7 @@ def register_appinfo_route():
     appinfo_routes = web.RouteTableDef()
     appinfo_routes.get("/ps-comfy-tiheaven-appinfo")(handle_get_appinfo)
     PromptServer.instance.app.router.add_routes(appinfo_routes)
-    logger.info("成功注册无依赖版路由：/ps-comfy-tiheaven-appinfo")
+    #logger.info("成功注册无依赖版路由：/ps-comfy-tiheaven-appinfo")
         
 def register_workflow_routes():
     """向 ComfyUI 服务器注册工作流相关路由"""
@@ -457,6 +600,7 @@ def register_locale_routes():
 register_workflow_routes()
 register_locale_routes()
 register_appinfo_route()
+register_thumbnail_route()
 
 logger.info(f"[Ps-Comfy-TiHeaveN]: If you see me, it means the loading has been successfully completed, Please download the Photoshop plugin from https://github.com/tiheaven/Ps-Comfy-TiHeaveN-CustomNodes/releases")
 

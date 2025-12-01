@@ -29,10 +29,14 @@
     "save": "Save",
     "close": "Close",
     "randomize": "Random Seed",
-    "AutoExpandSelection": "Auto expand selection",
+    "AutoExpandSelection": "Auto Expand Selection",
+    "ExpandSelectionToFullCanvas": "Expand to Entire Canvas",
     "auto": "Auto",
     "clear": "Clear",
-    "loadin": "Load"
+    "loadin": "Load",
+    "entirecanvas": "Entire Canvas",
+    "layer": "Layer",
+    "layerandmask": "Layer+Mask"
   },
   "status": {
     "ready": "Ready",
@@ -62,12 +66,16 @@
     "enterServerUrl": "Please enter Comfy server URL",
     "selectLanguage": "Select Language (Get more languages after connecting to the Comfy server)",
     "displayMemoryUsage": "Display Memory Usage",
-    "displayvMemoryUsage": "Display VRAM Usage"
+    "displayvMemoryUsage": "Display VRAM Usage",
+    "comfyapikey": "API Key(comfy.org)"
   },
   "label": {
     "executing": "Executing",
     "queuing": "Queuing",
-    "serverQueue": "Remaining queue: "
+    "serverQueue": "Remaining queue: ",
+    "linkedSelection": "Linked Selection Image",
+    "unlinkedSelection": "Unlinked Selection Image",
+    "unlinkedtip": "If you want to interact with the selection image, please name the node that loads the main image: main"
   },
   "tooltip": {
     "serverNotConnected": "Failed to connect to Comfy..."
@@ -99,7 +107,11 @@
     "serverInterfaceFailed": "The server-side interface execution failed. The node may not be installed; please install the node Ps-Comfy-TiHeaveN-CustomNodes!",
     "requestFailed": "Request failed: {statusText} (Status code: {status})",
     "nodeVersionTooLow": "Node version {currentVersion} < {requiredVersion}; please update the node version.",
-    "cannotConnectServer": "Failed to connect to the server. Please check if the server is powered on or the network is functioning properly!"
+    "cannotConnectServer": "Failed to connect to the server. Please check if the server is powered on or the network is functioning properly!",
+    "noLayerSelected": "Please select at least one layer",
+    "mutiLayersSelected": "Please do not select multiple layers",
+    "exportLayerFailed": "Failed to export layer:",
+    "exportCanvasFailed": "Failed to export canvas:"
   },
   "reward": "Buy Me a Coffee",
   "wechatscan": "Scan with WeChat"

@@ -29,10 +29,14 @@
     "save": "保存",
     "close": "關閉",
     "randomize": "隨機數",
-    "AutoExpandSelection": "自動擴展選區",
+    "AutoExpandSelection": "自動擴充選區邊界",
+    "ExpandSelectionToFullCanvas": "擴充選區邊界至全圖",
     "auto": "自動",
     "clear": "清空",
-    "loadin": "載入"
+    "loadin": "載入",
+    "entirecanvas": "整個畫布",
+    "layer": "圖層",
+    "layerandmask": "圖層+蒙版"
   },
   "status": {
     "ready": "準備就緒",
@@ -62,12 +66,16 @@
     "enterServerUrl": "請輸入Comfy服務器地址",
     "selectLanguage": "選擇語言(連接 Comfy 伺服器後獲取更多語言)",
     "displayMemoryUsage": "顯示記憶體佔用",
-    "displayvMemoryUsage": "顯示顯存佔用"
+    "displayvMemoryUsage": "顯示顯存佔用",
+    "comfyapikey": "API Key(comfy.org)"
   },
   "label": {
     "executing": "正在執行",
     "queuing": "排隊中",
-    "serverQueue": "剩餘佇列："
+    "serverQueue": "剩餘佇列：",
+    "linkedSelection": "已關聯選區圖像",
+    "unlinkedSelection": "未關聯選區圖像",
+    "unlinkedtip": "若要與選區圖像互動，請將載入主要圖像的節點命名為：main"
   },
   "tooltip": {
     "serverNotConnected": "未能連接Comfy..."
@@ -99,7 +107,11 @@
     "serverInterfaceFailed": "伺服器端介面執行失敗，可能未安裝節點，請安裝節點Ps-Comfy-TiHeaveN-CustomNodes！",
     "requestFailed": "請求失敗：{statusText}（狀態碼：{status}）",
     "nodeVersionTooLow": "節點版本 {currentVersion} < {requiredVersion}，請更新節點版本。",
-    "cannotConnectServer": "無法連接到伺服器，請檢查伺服器是否開機或網路是否正常！"
+    "cannotConnectServer": "無法連接到伺服器，請檢查伺服器是否開機或網路是否正常！",
+    "noLayerSelected": "請至少選中一個圖層",
+    "mutiLayersSelected": "請不要選中多個圖層",
+    "exportLayerFailed": "匯出圖層時發生錯誤：",
+    "exportCanvasFailed": "匯出畫布時發生錯誤："
   },
   "reward": "Buy Me a Coffee",
   "wechatscan": "微信掃碼"

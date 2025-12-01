@@ -1,5 +1,24 @@
 `往下翻有中文文档`
 
+### [Ps-Comfy-TiHeaveN-UXP-Plugin 1.2.0](https://github.com/tiheaven/Ps-Comfy-TiHeaveN-CustomNodes/releases/) & Ps-Comfy-TiHeaveN-CustomNodes 1.0.5 <br />
+  - 新增：API KEY，支持API工作流生图;
+  - 新增：多图参考，可上传"画布","图层","图层+蒙版"；
+  - 新增：扩展选区边界至全图；
+  - 修复：随机seed值过大导致报错；
+  - 优化：K采样器的预览图；
+  - 修复：工作流中的注释导致无法在插件中显示参数；
+  - 自此版本开始，由于增加了多图参考，与PS选区图像交互的"加载图像"节点，须命名为"main",不然会报错.
+  - New: API KEY support for API workflow-based image generation;
+  - New: Multi-image reference, supporting upload of "canvas", "layer", and "layer + mask";
+  - New: Extend selection boundary to full image;
+  - Fixed: Error caused by excessively large random seed value;
+  - Optimized: Preview image of the K-sampler;
+  - Fixed: Comments in the workflow preventing parameter display in the plugin;
+  - Starting from this version, due to the addition of multi-image reference, the "Load Image" node that interacts with PS selection images must be named "main", otherwise an error will occur.
+  ![](images/2025-12-02-01-12-36.png)
+
+
+
 ### [Ps-Comfy-TiHeaveN-UXP-Plugin 1.1.2](https://github.com/tiheaven/Ps-Comfy-TiHeaveN-CustomNodes/releases/) & Ps-Comfy-TiHeaveN-CustomNodes 1.0.4 <br />
   - 修复：PS插件中，服务器地址末尾若有斜杆则连不上服务器；
   - 新增：显存占用，在设置里打开即可，内存和显存数据均从服务器取出；
@@ -302,5 +321,6 @@ Ps-Comfy-TiHeaveN-CustomNodes（ComfyUI 节点）需配合 Ps-Comfy-TiHeaveN-UXP
 ### 已知问题
 
 1. 不支持Subgraph(子图)，请大家解开工作流中的Subgraph(子图)
+2. 不支持忽略节点及组
 
 如有问题或建议，可前往：[https://space.bilibili.com/399703773](https://space.bilibili.com/399703773) 反馈，第一次用Github很多东西不熟。
