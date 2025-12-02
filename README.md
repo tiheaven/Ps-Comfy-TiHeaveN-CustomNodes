@@ -16,6 +16,8 @@
   - Fixed: Comments in the workflow preventing parameter display in the plugin;
   - Starting from this version, due to the addition of multi-image reference, the "Load Image" node that interacts with PS selection images must be named "main", otherwise an error will occur.
   ![](images/2025-12-02-01-12-36.png)
+  
+  https://www.bilibili.com/video/BV13bSmBkEyK
 
 
 
@@ -92,7 +94,7 @@ Real-time Queue Status: When you have both the PS plugin and browser open, and i
 
 # Dependency Environment
 
-- **Photoshop**: ≥ 26.0.0
+- **Photoshop**: ≥ 23.4.0
 
 - **ComfyUI**: The latest version is recommended. Compatibility of older versions needs to be tested by users.
 
@@ -225,7 +227,7 @@ Ps-Comfy-TiHeaveN-CustomNodes（ComfyUI 节点）需配合 Ps-Comfy-TiHeaveN-UXP
 
 # 依赖环境
 
-- **Photoshop**：>= 26.0.0
+- **Photoshop**：>= 23.4.0
 
 - **ComfyUI**：推荐最新版本，低版本需自行测试兼容性。
 
