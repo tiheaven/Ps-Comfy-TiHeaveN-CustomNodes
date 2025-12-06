@@ -212,6 +212,9 @@ def convert_workflow_format(original_workflow):
 
 async def handle_get_workflow(request):
     """处理获取单个工作流文件的请求（/workflows/{filename}）"""
+    #创建空白1x1png
+    create_empty_thumbnail()
+
     filename = request.match_info.get("filename")
     if not filename or not filename.endswith(".json"):
         return web.Response(status=400, text="无效的文件名（必须是 .json 文件）")
@@ -504,13 +507,13 @@ async def handle_get_thumbnail(request):
                 # 其他模式直接转换为RGB
                 processed_img = img.convert("RGB")
             
-            # 计算缩略图尺寸（长边为120px）
+            # 计算缩略图尺寸（长边为512px）
             width, height = processed_img.size
             if width > height:
-                new_width = 120
+                new_width = 512
                 new_height = int((height / width) * new_width)
             else:
-                new_height = 120
+                new_height = 512
                 new_width = int((width / height) * new_height)
             
             # 生成缩略图
@@ -596,11 +599,65 @@ def register_locale_routes():
     server.app.router.add_routes(locale_routes)
     #logger.info("语言文件路由已成功注册")
 
+def delete_dir_recursive(dir_path):
+    try:
+        if not os.path.exists(dir_path):
+            return  # 目录不存在，直接返回
+        
+        # 遍历目录内的所有项
+        for item_name in os.listdir(dir_path):
+            item_path = os.path.join(dir_path, item_name)
+            
+            # 如果是文件，直接删除
+            if os.path.isfile(item_path) or os.path.islink(item_path):
+                os.remove(item_path)
+            # 如果是子目录，递归删除
+            elif os.path.isdir(item_path):
+                delete_dir_recursive(item_path)
+        
+        # 最后删除空目录
+        os.rmdir(dir_path)
+
+    except Exception as e:
+        pass
+
+def delete_input_temp():
+    try:
+        # 获取input目录
+        input_dir = get_input_dir()
+        # 构建目标文件夹路径
+        target_dir = os.path.join(input_dir, "Ps-Comfy-TiHeaveN")
+        #每次启动清空Ps-Comfy-TiHeaveN
+        delete_dir_recursive(target_dir)
+        # 确保文件夹存在
+        os.makedirs(target_dir, exist_ok=True)
+    except Exception as e:
+        pass
+
+def create_empty_thumbnail():
+    try:
+        # 获取input目录
+        input_dir = get_input_dir()
+        # 构建目标文件夹路径
+        target_dir = os.path.join(input_dir, "Ps-Comfy-TiHeaveN")
+        # 确保文件夹存在
+        os.makedirs(target_dir, exist_ok=True)
+        # 构建图片文件路径
+        image_path = os.path.join(target_dir, "empty.png")
+        
+        # 创建1x1透明PNG 请不要删除此png
+        with Image.new("RGBA", (1, 1), (0, 0, 0, 0)) as img:
+            img.save(image_path, "PNG")
+    except Exception as e:
+        pass
+
 # 初始化时自动注册路由
 register_workflow_routes()
 register_locale_routes()
 register_appinfo_route()
 register_thumbnail_route()
+delete_input_temp()
+create_empty_thumbnail()
 
 logger.info(f"[Ps-Comfy-TiHeaveN]: If you see me, it means the loading has been successfully completed, Please download the Photoshop plugin from https://github.com/tiheaven/Ps-Comfy-TiHeaveN-CustomNodes/releases")
 

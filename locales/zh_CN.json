@@ -32,11 +32,13 @@
         "AutoExpandSelection": "自动扩展选区边界",
         "ExpandSelectionToFullCanvas":"扩展选区边界至全图",
         "auto": "自动",
-        "clear": "清空",
+        "clear": "清除",
         "loadin": "载入",
         "entirecanvas":"整个画布",
         "layer":"图层",
-        "layerandmask":"图层+蒙版"
+        "layerandmask":"图层+蒙版",
+        "settodocwidth":"设为文档宽度",
+        "settodocheight":"设为文档高度"
     },
     "status": {
         "ready": "准备就绪",

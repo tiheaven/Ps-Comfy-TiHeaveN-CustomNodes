@@ -36,7 +36,9 @@
     "loadin": "Load",
     "entirecanvas": "Entire Canvas",
     "layer": "Layer",
-    "layerandmask": "Layer+Mask"
+    "layerandmask": "Layer+Mask",
+    "settodocwidth": "Set to Document Width",
+    "settodocheight": "Set to Document Height"
   },
   "status": {
     "ready": "Ready",

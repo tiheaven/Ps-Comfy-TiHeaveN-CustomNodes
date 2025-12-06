@@ -1,7 +1,7 @@
 [project]
 name = "Ps-Comfy-TiHeaveN-CustomNodes"
-description = "Need Ps-Comfy-TiHeaveN-UXP-Plugin v1.2.0; A communication bridge between Photoshop plugins and ComfyUI servers, enabling AI image generation by connecting PS plugins to Comfy servers for model inference and image rendering."
-version = "1.0.5"
+description = "Use ComfyUI efficiently in Photoshop, which supports multi-image reference and real-time preview of K-Sampler within Photoshop, as well as API calls to models such as Nano Banana Pro (Google Gemini). You can generate images via API without logging in to ComfyUI, and any workflow can be invoked in Photoshop after simple modifications.The Ps-Comfy-TiHeaveN-UXP-Plugin needs to be installed."
+version = "1.0.6"
 license = { file = "LICENSE" }
 
 [project.urls]

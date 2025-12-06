@@ -1,5 +1,19 @@
 `往下翻有中文文档`
 
+### [Ps-Comfy-TiHeaveN-UXP-Plugin 1.2.1](https://github.com/tiheaven/Ps-Comfy-TiHeaveN-CustomNodes/releases/) & Ps-Comfy-TiHeaveN-CustomNodes 1.0.6 <br />
+  - 新增：图片上传区增加清空按钮，多图参考时，即可清空(忽略)多余的参考图。初始化时为清空状态;
+  - 新增：每次启动Comfy服务器时，自动清空'ComfyUI\input\Ps-Comfy-TiHeaveN'下的临时文件；
+  - 新增：返图后重命名图层为当前工作流功能名；
+  - 优化：在K采样器预览区优先展示选区图像；
+  - 优化：示例工作流；
+  - 修复：上版本漏翻译的字段；
+  - New feature: Added a clear button to the image upload area. When using multiple reference images, you can clear (ignore) redundant reference images. It is in a cleared state by default on initialization.
+  - New feature: Automatically clears temporary files under ComfyUI\input\Ps-Comfy-TiHeaveN each time the Comfy server starts.
+  - New feature: Renames the layer to the name of the current workflow function after returning the generated image.
+  - Optimization: Prioritizes displaying the selected area image in the K-sampler preview area.
+  - Optimization: Sample workflows.
+  - Fix: Missing translated fields from the previous version.
+
 ### [Ps-Comfy-TiHeaveN-UXP-Plugin 1.2.0](https://github.com/tiheaven/Ps-Comfy-TiHeaveN-CustomNodes/releases/) & Ps-Comfy-TiHeaveN-CustomNodes 1.0.5 <br />
   - 新增：API KEY，支持API工作流生图;
   - 新增：多图参考，可上传"画布","图层","图层+蒙版"；
