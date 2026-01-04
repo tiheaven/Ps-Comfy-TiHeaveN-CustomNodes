@@ -113,7 +113,8 @@
     "noLayerSelected": "Please select at least one layer",
     "mutiLayersSelected": "Please do not select multiple layers",
     "exportLayerFailed": "Failed to export layer:",
-    "exportCanvasFailed": "Failed to export canvas:"
+    "exportCanvasFailed": "Failed to export canvas:",
+    "missingnode":"Missing node:"
   },
   "reward": "Buy Me a Coffee",
   "wechatscan": "Scan with WeChat"

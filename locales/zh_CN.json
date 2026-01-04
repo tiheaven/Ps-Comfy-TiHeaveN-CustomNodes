@@ -113,7 +113,8 @@
         "noLayerSelected":"请至少选中一个图层",
         "mutiLayersSelected":"请不要选中多个图层",
         "exportLayerFailed": "导出图层时发生错误: ",
-        "exportCanvasFailed": "导出画布时发生错误: "
+        "exportCanvasFailed": "导出画布时发生错误: ",
+        "missingnode":"缺少节点："
     },
     "reward": "赞赏支持",
     "wechatscan": "微信扫码"

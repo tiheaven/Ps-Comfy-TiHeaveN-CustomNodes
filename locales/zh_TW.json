@@ -113,7 +113,8 @@
     "noLayerSelected": "請至少選中一個圖層",
     "mutiLayersSelected": "請不要選中多個圖層",
     "exportLayerFailed": "匯出圖層時發生錯誤：",
-    "exportCanvasFailed": "匯出畫布時發生錯誤："
+    "exportCanvasFailed": "匯出畫布時發生錯誤：",
+    "missingnode":"缺少節點："
   },
   "reward": "Buy Me a Coffee",
   "wechatscan": "微信掃碼"

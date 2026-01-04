@@ -1,5 +1,13 @@
 `往下翻有中文文档`
 
+### [Ps-Comfy-TiHeaveN-UXP-Plugin 1.2.2](https://github.com/tiheaven/Ps-Comfy-TiHeaveN-CustomNodes/releases/) & Ps-Comfy-TiHeaveN-CustomNodes 1.0.7 <br />
+  - 修复：MacOs中无法读取和使用工作流的Bug;
+  - 新增：缺失节点报错.
+  - Fix: Bug where workflows cannot be read or used on macOS
+  - New: Added error reporting for missing nodes
+
+![](images/2026-01-04-12-49-57.png)
+
 ### [Ps-Comfy-TiHeaveN-UXP-Plugin 1.2.1](https://github.com/tiheaven/Ps-Comfy-TiHeaveN-CustomNodes/releases/) & Ps-Comfy-TiHeaveN-CustomNodes 1.0.6 <br />
   - 新增：图片上传区增加清空按钮，多图参考时，即可清空(忽略)多余的参考图。初始化时为清空状态;
   - 新增：每次启动Comfy服务器时，自动清空'ComfyUI\input\Ps-Comfy-TiHeaveN'下的临时文件；
