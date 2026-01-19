@@ -1,5 +1,11 @@
 `往下翻有中文文档`
 
+## 注意，若插件中的实时预览失效：ComfyUI自v0.5.0开始，须在启动命令行中加入`--preview-method taesd` 或 `--preview-method latent2rgb` 或 `--preview-method auto`
+
+ - [https://github.com/Comfy-Org/ComfyUI#how-to-show-high-quality-previews](https://github.com/Comfy-Org/ComfyUI#how-to-show-high-quality-previews)
+## Note: If the real-time preview in the plugin fails: Since ComfyUI v0.5.0, you must add `--preview-method taesd`, `--preview-method latent2rgb` or `--preview-method auto` to the startup command line.
+ - [https://github.com/Comfy-Org/ComfyUI#how-to-show-high-quality-previews](https://github.com/Comfy-Org/ComfyUI#how-to-show-high-quality-previews)
+
 ### [Ps-Comfy-TiHeaveN-UXP-Plugin 1.2.2](https://github.com/tiheaven/Ps-Comfy-TiHeaveN-CustomNodes/releases/) & Ps-Comfy-TiHeaveN-CustomNodes 1.0.7 <br />
   - 修复：MacOs中无法读取和使用工作流的Bug;
   - 新增：缺失节点报错.
